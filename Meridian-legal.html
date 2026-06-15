@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meridian Legal Group — Attorneys at Law</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy: #08101E;
+      --navy2: #11213C;
+      --navy3: #1C3358;
+      --cream: #F4F0E8;
+      --cream2: #EDE8DC;
+      --gold: #C4A050;
+      --gold2: #D4B468;
+      --slate: #8A9BB8;
+      --white: #F8F6F0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--navy);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 64px;
+      background: rgba(244, 240, 232, 0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(8, 16, 30, .08);
+    }
+
+    .nav-logo {
+      font-family: 'EB Garamond', serif;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--slate);
+      text-decoration: none;
+      transition: color .3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--navy);
+    }
+
+    .nav-cta {
+      padding: 10px 24px;
+      background: var(--navy);
+      color: var(--cream);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .3s;
+    }
+
+    .nav-cta:hover {
+      background: var(--navy3);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 68px;
+    }
+
+    .hero-left {
+      background: var(--navy);
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.08;
+    }
+
+    .hero-left-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-left h1 {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(40px, 5vw, 66px);
+      font-weight: 400;
+      line-height: 1.12;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+
+    .hero-left h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-left p {
+      font-size: 15px;
+      color: rgba(244, 240, 232, .55);
+      max-width: 380px;
+      line-height: 1.85;
+      margin-bottom: 48px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 36px;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .3s, transform .2s;
+    }
+
+    .btn-gold:hover {
+      background: var(--gold2);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost-navy {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 36px;
+      border: 1px solid rgba(244, 240, 232, .15);
+      color: var(--white);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color .3s, color .3s;
+    }
+
+    .btn-ghost-navy:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .hero-right {
+      background: var(--cream2);
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .stats-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-row {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 32px 0;
+      border-bottom: 1px solid rgba(8, 16, 30, .08);
+    }
+
+    .stat-row:last-child {
+      border-bottom: none;
+    }
+
+    .stat-num {
+      font-family: 'EB Garamond', serif;
+      font-size: 52px;
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1;
+      min-width: 130px;
+    }
+
+    .stat-num sup {
+      font-size: 22px;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--navy);
+    }
+
+    .stat-desc {
+      font-size: 12px;
+      color: var(--slate);
+      margin-top: 3px;
+    }
+
+    .hero-right-tag {
+      margin-top: 36px;
+      padding: 20px 24px;
+      border-left: 2px solid var(--gold);
+      background: rgba(196, 160, 80, .06);
+    }
+
+    .hero-right-tag p {
+      font-family: 'EB Garamond', serif;
+      font-size: 15px;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.6;
+    }
+
+    .hero-right-tag cite {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 10px;
+      font-style: normal;
+    }
+
+    /* SHARED */
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .section-eyebrow::before {
+      content: '';
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h2 {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(34px, 4vw, 50px);
+      font-weight: 400;
+      line-height: 1.18;
+      margin-bottom: 14px;
+    }
+
+    .section-sub {
+      font-size: 14px;
+      color: var(--slate);
+      max-width: 420px;
+      margin-bottom: 56px;
+    }
+
+    .rule {
+      height: 1px;
+      background: rgba(8, 16, 30, .07);
+      margin: 0 64px;
+    }
+
+    /* PRACTICE */
+    .practice {
+      padding: 100px 64px;
+      background: var(--cream);
+    }
+
+    .practice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: rgba(8, 16, 30, .07);
+      border: 1px solid rgba(8, 16, 30, .07);
+    }
+
+    .practice-card {
+      background: var(--cream);
+      padding: 48px 44px;
+      transition: background .3s;
+    }
+
+    .practice-card:hover {
+      background: var(--cream2);
+    }
+
+    .practice-roman {
+      font-family: 'EB Garamond', serif;
+      font-size: 13px;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+      opacity: .8;
+    }
+
+    .practice-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .practice-desc {
+      font-size: 13px;
+      color: var(--slate);
+      line-height: 1.85;
+    }
+
+    .practice-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      margin-top: 20px;
+      transition: gap .2s;
+    }
+
+    .practice-link::after {
+      content: '→';
+    }
+
+    .practice-link:hover {
+      gap: 10px;
+    }
+
+    /* TRUST */
+    .trust {
+      padding: 100px 64px;
+      background: var(--navy);
+    }
+
+    .trust h2 {
+      color: var(--white);
+    }
+
+    .trust .section-sub {
+      color: rgba(244, 240, 232, .45);
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid rgba(244, 240, 232, .08);
+    }
+
+    .trust-item {
+      padding: 44px 36px;
+      border-right: 1px solid rgba(244, 240, 232, .08);
+    }
+
+    .trust-item:last-child {
+      border-right: none;
+    }
+
+    .trust-num {
+      font-family: 'EB Garamond', serif;
+      font-size: 42px;
+      font-weight: 400;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .trust-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 20px;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .trust-desc {
+      font-size: 13px;
+      color: rgba(244, 240, 232, .45);
+      line-height: 1.85;
+    }
+
+    /* TEAM */
+    .team {
+      padding: 100px 64px;
+      background: var(--cream2);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .team-card {
+      border: 1px solid rgba(8, 16, 30, .08);
+      overflow: hidden;
+      transition: box-shadow .3s, transform .3s;
+    }
+
+    .team-card:hover {
+      box-shadow: 0 12px 40px rgba(8, 16, 30, .12);
+      transform: translateY(-4px);
+    }
+
+    .team-photo {
+      height: 380px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform .5s ease;
+    }
+
+    .team-card:hover .team-photo img {
+      transform: scale(1.04);
+    }
+
+    .team-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8, 16, 30, .6) 0%, transparent 50%);
+    }
+
+    .team-info {
+      padding: 32px 28px;
+    }
+
+    .team-name {
+      font-family: 'EB Garamond', serif;
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    .team-role {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .team-bio {
+      font-size: 13px;
+      color: var(--slate);
+      line-height: 1.8;
+    }
+
+    /* CONTACT */
+    .contact-cta {
+      padding: 100px 64px;
+      background: var(--cream);
+    }
+
+    .contact-inner {
+      max-width: 660px;
+    }
+
+    .contact-cta h2 {
+      margin-bottom: 14px;
+    }
+
+    .contact-cta p {
+      font-size: 15px;
+      color: var(--slate);
+      margin-bottom: 44px;
+      line-height: 1.8;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    .contact-details {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .contact-detail-icon {
+      width: 16px;
+      height: 16px;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .contact-detail-text strong {
+      font-size: 13px;
+      font-weight: 500;
+      display: block;
+    }
+
+    .contact-detail-text span {
+      font-size: 12px;
+      color: var(--slate);
+    }
+
+    .btn-navy {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 36px;
+      background: var(--navy);
+      color: var(--cream);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .3s;
+    }
+
+    .btn-navy:hover {
+      background: var(--navy3);
+    }
+
+    .btn-outline-navy {
+      display: inline-flex;
+      align-items: center;
+      padding: 14px 36px;
+      border: 1px solid rgba(8, 16, 30, .2);
+      color: var(--navy);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color .3s;
+    }
+
+    .btn-outline-navy:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy);
+      padding: 32px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      font-family: 'EB Garamond', serif;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+
+    .footer-logo span {
+      color: var(--gold);
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      color: rgba(244, 240, 232, .28);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 22px;
+    }
+
+    .footer-links a {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(244, 240, 232, .28);
+      text-decoration: none;
+      transition: color .3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        padding: 18px 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-left {
+        padding: 60px 24px;
+        min-height: 70vh;
+      }
+
+      .hero-right {
+        padding: 60px 24px;
+      }
+
+      .practice,
+      .trust,
+      .team,
+      .contact-cta {
+        padding: 72px 24px;
+      }
+
+      .practice-grid,
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(244, 240, 232, .08);
+      }
+
+      .rule {
+        margin: 0 24px;
+      }
+
+      footer {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Meridian<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#practice">Practice Areas</a></li>
+      <li><a href="#team">Our Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Free consultation</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <img class="hero-left-img"
+        src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=900&q=85" alt=""
+        aria-hidden="true" />
+      <div class="hero-left-content">
+        <div class="hero-eyebrow reveal">Attorneys at Law · Since 1998</div>
+        <h1 class="reveal">Justice is not<br />a matter of<br /><em>chance.</em></h1>
+        <p class="reveal">Meridian Legal Group has represented clients across corporate, civil, and criminal matters for
+          over two decades. We don't just know the law — we understand how to use it.</p>
+        <div class="hero-ctas reveal">
+          <a href="#contact" class="btn-gold">Book a consultation</a>
+          <a href="#practice" class="btn-ghost-navy">Practice areas</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stats-group reveal">
+        <div class="stat-row">
+          <div class="stat-num">26<sup>+</sup></div>
+          <div>
+            <div class="stat-label">Years of practice</div>
+            <div class="stat-desc">Serving clients across Nigeria since 1998</div>
+          </div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-num">94<sup>%</sup></div>
+          <div>
+            <div class="stat-label">Cases resolved favourably</div>
+            <div class="stat-desc">Across all practice areas</div>
+          </div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-num">1.2k</div>
+          <div>
+            <div class="stat-label">Clients represented</div>
+            <div class="stat-desc">Individuals, businesses &amp; institutions</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right-tag reveal">
+        <p>"A firm that genuinely fights for your interests. Meridian handled our corporate restructuring with precision
+          and discretion."</p>
+        <cite>— Adaeze B., CEO, Hartley Group</cite>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- PRACTICE AREAS -->
+  <section id="practice" class="practice">
+    <div class="section-eyebrow reveal">What we do</div>
+    <h2 class="reveal">Our practice areas</h2>
+    <p class="section-sub reveal">We provide expert legal counsel across a focused range of disciplines — so when we
+      take your case, we know it deeply.</p>
+    <div class="practice-grid reveal">
+      <div class="practice-card">
+        <div class="practice-roman">I.</div>
+        <div class="practice-title">Corporate &amp; Commercial Law</div>
+        <p class="practice-desc">Business formation, mergers and acquisitions, commercial contracts, and corporate
+          governance. We protect your business at every stage of growth.</p>
+        <a href="#contact" class="practice-link">Learn more</a>
+      </div>
+      <div class="practice-card">
+        <div class="practice-roman">II.</div>
+        <div class="practice-title">Real Estate &amp; Property</div>
+        <p class="practice-desc">Title searches, conveyancing, landlord-tenant disputes, and land acquisition. We ensure
+          your property interests are secured and legally sound.</p>
+        <a href="#contact" class="practice-link">Learn more</a>
+      </div>
+      <div class="practice-card">
+        <div class="practice-roman">III.</div>
+        <div class="practice-title">Litigation &amp; Dispute Resolution</div>
+        <p class="practice-desc">From arbitration to full trial representation — we prepare thoroughly, argue
+          strategically, and pursue the best outcome for every client.</p>
+        <a href="#contact" class="practice-link">Learn more</a>
+      </div>
+      <div class="practice-card">
+        <div class="practice-roman">IV.</div>
+        <div class="practice-title">Employment &amp; Labour Law</div>
+        <p class="practice-desc">Employment contracts, wrongful dismissal, workplace disputes, and HR compliance. We
+          advise both employers and employees with equal diligence.</p>
+        <a href="#contact" class="practice-link">Learn more</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="trust">
+    <div class="section-eyebrow reveal">Why Meridian</div>
+    <h2 class="reveal">What sets us apart.</h2>
+    <p class="section-sub reveal">We are not the largest firm in Nigeria. We are one of the most thorough.</p>
+    <div class="trust-grid reveal">
+      <div class="trust-item">
+        <div class="trust-num">01</div>
+        <div class="trust-title">Precision over volume</div>
+        <p class="trust-desc">We take on a selective caseload so every client receives senior attention — not junior
+          delegation. Your case is never one of hundreds.</p>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">02</div>
+        <div class="trust-title">Full transparency</div>
+        <p class="trust-desc">No hidden fees, no vague timelines. From the first consultation, you'll know exactly where
+          you stand and what to expect at every stage.</p>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">03</div>
+        <div class="trust-title">A network that works</div>
+        <p class="trust-desc">Decades of relationships with judges, arbitrators, and regulators across Nigeria mean we
+          understand the landscape — and move within it effectively.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team" class="team">
+    <div class="section-eyebrow reveal">Our attorneys</div>
+    <h2 class="reveal">The team.</h2>
+    <p class="section-sub reveal">Every attorney at Meridian brings deep domain expertise and a personal commitment to
+      each case they carry.</p>
+    <div class="team-grid reveal">
+      <div class="team-card">
+        <div class="team-photo">
+          <img
+            src="https://images.pexels.com/photos/32064778/pexels-photo-32064778.jpeg?auto=compress&cs=tinysrgb&w=800"
+            alt="Ola Adeyemi — Senior Partner" loading="lazy" style="object-position: center 20%;" />
+          <div class="team-photo-overlay"></div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Ola Adeyemi, SAN</div>
+          <div class="team-role">Senior Partner · Corporate Law</div>
+          <p class="team-bio">Called to the Bar in 2010, Ola has led over 300 corporate transactions across energy,
+            tech, and financial services. A Fellow of the Chartered Institute of Arbitrators.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">
+          <img
+            src="https://images.pexels.com/photos/37129336/pexels-photo-37129336.jpeg?auto=compress&cs=tinysrgb&w=800"
+            alt="Ngozi Kamara — Partner" loading="lazy" />
+          <div class="team-photo-overlay"></div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Ngozi Kamara</div>
+          <div class="team-role">Partner · Litigation</div>
+          <p class="team-bio">A litigator with a 91% success rate across civil and commercial matters in the High Court
+            and Court of Appeal. Known for her methodical preparation and sharp cross-examination.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-cta">
+    <div class="contact-inner reveal">
+      <div class="section-eyebrow">Speak with us</div>
+      <h2>Your first consultation<br />is free.</h2>
+      <p>Bring us your matter — corporate, property, employment, or dispute. We'll give you an honest assessment and a
+        clear path forward at no cost for the initial session.</p>
+      <div class="contact-row">
+        <a href="https://wa.me/2341234567890" class="btn-gold">WhatsApp us</a>
+        <a href="mailto:enquiries@meridianlegal.com" class="btn-outline-navy">Send an email</a>
+      </div>
+      <div class="contact-details">
+        <div class="contact-detail">
+          <div class="contact-detail-text">
+            <strong>14 Marina Street, Lagos Island</strong>
+            <span>Victoria Island annex also available</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-text">
+            <strong>Mon – Fri, 8:00am – 6:00pm</strong>
+            <span>Emergency consultations available</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Meridian<span>.</span></div>
+    <div class="footer-copy">© 2025 Meridian Legal Group. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="#">LinkedIn</a>
+      <a href="#">Privacy</a>
+      <a href="#">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('visible')); return; }
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 60); obs.unobserve(entry.target); }
+        });
+      }, { threshold: 0.08 });
+      els.forEach(e => obs.observe(e));
+    })();
+  </script>
+</body>
+
+</html>
